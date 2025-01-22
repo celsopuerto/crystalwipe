@@ -77,14 +77,15 @@ body {
   position: sticky; /* Better for performance */
   top: 0;
   z-index: 1000;
-  background-color: #111827; /* Ensure visibility */
+  background-color: white; /* Ensure visibility */
   transition: all 0.3s ease;
 }
 
 /* Shrinking effect */
 .shrink {
-  padding: 1.25rem 7rem; /* Reduced padding */
-  font-size: 0.875rem; /* Optional: Reduce font size */
+  padding: 0.8rem 5rem; /* Reduced padding */
+  font-weight: 500;
+  font-size: 1rem; /* Optional: Reduce font size */
 }
 
 .logo {
