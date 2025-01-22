@@ -58,8 +58,8 @@ export default function Navigation() {
         <Image
           src="/logo.png"
           alt="Logo"
-          width={isScrolled ? 50 : 100} // Adjust logo size dynamically
-          height={isScrolled ? 50 : 100}
+          width={100} // Adjust logo size dynamically
+          height={100}
           className="logo"
         />
         <div className="flex text-m font-inter space-x-10">
