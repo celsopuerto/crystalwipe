@@ -41,7 +41,7 @@ export default function Navigation() {
       </div>
 
       <nav
-        className={`flex justify-between items-center py-9 px-28 bg-slate-950 text-white transition-all duration-300 ${
+        className={`flex justify-between items-center py-9 text-black px-28 transition-all duration-300 ${
           isScrolled ? "sticky shrink" : ""
         }`}
       >
@@ -64,6 +64,20 @@ export default function Navigation() {
           </a>
           <a href="#" className="hover:text-blue-400">
             Blog
+          </a>
+        </div>
+        <div className="flex items-center space-x-8 font-inter text-m">
+          <a
+            href="#"
+            className="px-4 py-2 text-blue-500 border border-gray-300 rounded hover:border-blue-500 hover:text-blue-500 transition-all duration-200 ease-in-out"
+          >
+            Book Online
+          </a>
+          <a
+            href="#"
+            className="px-4 py-2 border border-gray-300 rounded hover:border-blue-500 hover:text-blue-500 transition-all duration-200 ease-in-out"
+          >
+            Login
           </a>
         </div>
       </nav>
