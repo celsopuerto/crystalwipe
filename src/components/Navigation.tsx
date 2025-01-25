@@ -89,7 +89,7 @@ export default function Navigation() {
           {/* Desktop Buttons (Book Online & Login) */}
           <div className="hidden md:flex items-center space-x-3 font-inter">
             <a
-              href="/register"
+              href="#"
               className="px-5 py-2 text-sm font-bold text-blue-500 border border-gray-300 rounded-md hover:border-blue-500 hover:text-blue-500 transition-all duration-200"
             >
               Book Online
@@ -131,14 +131,20 @@ export default function Navigation() {
             </button>
           </div>
           <div className="flex flex-col items-center bg-white py-6 space-y-4">
-            {["Home", "Services", "Blog", "About", "Contact"].map((link) => (
+            {[
+              { name: "Home", href: "/" },
+              { name: "Services", href: "/services" },
+              { name: "Blog", href: "/blog" },
+              { name: "About", href: "/about" },
+              { name: "Contact", href: "/contact" },
+            ].map((link) => (
               <a
-                key={link}
-                href="#"
+                key={link.name}
+                href={link.href}
                 className="text-lg text-gray-800 hover:text-blue-600 transition-all duration-200"
                 onClick={() => setIsOpen(false)}
               >
-                {link}
+                {link.name}
               </a>
             ))}
             <div className="mt-6 flex flex-col items-center space-y-4">
@@ -149,7 +155,7 @@ export default function Navigation() {
                 Book Online
               </a>
               <a
-                href="#"
+                href="/login"
                 className="px-5 py-2 text-sm font-bold text-white bg-blue-500 rounded-md hover:bg-blue-600 transition-all duration-200"
               >
                 Login
