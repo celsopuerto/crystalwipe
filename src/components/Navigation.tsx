@@ -13,15 +13,27 @@ import {
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [currentTime, setCurrentTime] = useState(() => {
+    const now = new Date();
+    return now.toLocaleTimeString();
+  });
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
+    const updateClock = () => {
+      const now = new Date();
+      setCurrentTime(now.toLocaleTimeString());
+    };
+
     window.addEventListener("scroll", handleScroll);
+    const timer = setInterval(updateClock, 1000);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      clearInterval(timer);
     };
   }, []);
 
@@ -31,6 +43,17 @@ export default function Navigation() {
       <div className="bg-gray-100 border-b border-gray-200 py-2 hidden md:block">
         <div className="flex justify-between items-center mx-auto max-w-screen-xl px-4 md:px-20">
           <span className="flex text-xs font-inter text-black font-normal space-x-4">
+            <span className="flex items-center hover:text-blue-600 transition-all duration-200">
+              <FaClock className="mr-2 text-blue-600" />
+              Mon - Sat: 8:00 AM - 8:00 PM
+            </span>
+          </span>
+          <span className="flex text-xs font-inter text-black font-normal space-x-4">
+            <span className="flex items-center hover:text-blue-600 transition-all duration-200">
+              {currentTime}
+            </span>
+          </span>
+          <span className="flex text-xs font-inter text-black font-normal space-x-4">
             <a
               href="tel:+1234567890"
               className="hover:text-blue-600 transition-all duration-300 flex items-center"
@@ -38,10 +61,6 @@ export default function Navigation() {
               <FaPhoneAlt className="mr-2 text-blue-600" />
               +1 (234) 567-890
             </a>
-            <span className="flex items-center hover:text-blue-600 transition-all duration-200">
-              <FaClock className="mr-2 text-blue-600" />
-              Mon - Sat: 8:00 AM - 8:00 PM
-            </span>
             <a
               href="mailto:info@crystalwipe.com"
               className="hover:text-blue-600 transition-all duration-300 flex items-center"
