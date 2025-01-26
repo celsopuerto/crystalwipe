@@ -40,7 +40,7 @@ export default function Navigation() {
   return (
     <>
       {/* Top Contact Info */}
-      <div className="bg-gray-100 border-b border-gray-200 py-2 hidden md:block">
+      <div className="z-50 bg-gray-100 border-b border-gray-200 py-2 hidden md:block">
         <div className="flex justify-between items-center mx-auto max-w-screen-xl px-4 md:px-20">
           <span className="flex text-xs font-inter text-black font-normal space-x-4">
             <span className="flex items-center hover:text-blue-600 transition-all duration-200">
@@ -89,11 +89,11 @@ export default function Navigation() {
           {/* Desktop Menu */}
           <div className="hidden md:flex text-sm font-inter space-x-10">
             {[
-              { name: "Home", href: "/" },
-              { name: "Services", href: "/services" },
-              { name: "Blog", href: "/blog" },
-              { name: "About", href: "/about" },
-              { name: "Contact", href: "/contact" },
+              { name: "Home", href: "/#home" },
+              { name: "Services", href: "/#services" },
+              { name: "Blog", href: "/#blog" },
+              { name: "About", href: "/#about" },
+              { name: "Contact", href: "/#contact" },
             ].map((link) => (
               <a
                 key={link.name}
@@ -151,11 +151,11 @@ export default function Navigation() {
           </div>
           <div className="flex flex-col items-center bg-white py-6 space-y-4">
             {[
-              { name: "Home", href: "/" },
-              { name: "Services", href: "/services" },
-              { name: "Blog", href: "/blog" },
-              { name: "About", href: "/about" },
-              { name: "Contact", href: "/contact" },
+              { name: "Home", href: "/#home" },
+              { name: "Services", href: "/#services" },
+              { name: "Blog", href: "/#blog" },
+              { name: "About", href: "/#about" },
+              { name: "Contact", href: "/#contact" },
             ].map((link) => (
               <a
                 key={link.name}
