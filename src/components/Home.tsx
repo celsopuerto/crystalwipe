@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 export default function Home() {
   return (
     <section
-      id="home"
       className="relative h-screen bg-cover bg-center -mt-14 overflow-hidden"
       style={{ backgroundImage: "url(/furniture-img.jpg)" }}
     >
@@ -32,7 +31,7 @@ export default function Home() {
           <p className="text-md sm:text-lg mb-6">
             For Maid Service
             <br />
-            <span className="font-bold text-xl">+971 55 495 8317</span>
+            <span className="font-bold text-xl">+971 56 587 8198</span>
           </p>
 
           {/* Explore Our Services Button */}

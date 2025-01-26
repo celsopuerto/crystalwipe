@@ -11,18 +11,27 @@ export default function Services() {
       description:
         "Experience a spotless home with our comprehensive residential cleaning services. From kitchens to bedrooms, we ensure every corner shines.",
       icon: <FaHome className="text-4xl text-indigo-500" />,
+      borderColor: "border-indigo-500",
+      bgColor: "bg-gradient-to-b from-indigo-100 via-indigo-50 to-white",
+      cardBg: "bg-indigo-50",
     },
     {
       title: "Office Cleaning",
       description:
         "Maintain a productive workspace with our professional office cleaning services. We keep your office environment clean and welcoming.",
       icon: <FaBuilding className="text-4xl text-green-500" />,
+      borderColor: "border-green-500",
+      bgColor: "bg-gradient-to-b from-green-100 via-green-50 to-white",
+      cardBg: "bg-green-50",
     },
     {
       title: "Deep Cleaning",
       description:
         "Our deep cleaning service tackles the toughest dirt and grime, leaving your space refreshed and revitalized from top to bottom.",
       icon: <FaBroom className="text-4xl text-red-500" />,
+      borderColor: "border-red-500",
+      bgColor: "bg-gradient-to-b from-red-100 via-red-50 to-white",
+      cardBg: "bg-red-50",
     },
   ];
 
@@ -37,7 +46,7 @@ export default function Services() {
     >
       <div className="max-w-7xl mx-auto">
         <motion.h1
-          className="text-4xl font-extrabold text-center text-gray-800 mb-16"
+          className="text-4xl font-extrabold text-center text-gray-800 mb-24"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -59,7 +68,7 @@ export default function Services() {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300 border-t-4 border-indigo-500"
+              className={`rounded-2xl shadow-lg p-10 hover:shadow-2xl transition-shadow duration-300 border-t-4 ${service.borderColor} ${service.cardBg}`}
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },

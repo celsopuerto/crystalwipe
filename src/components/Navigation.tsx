@@ -40,7 +40,10 @@ export default function Navigation() {
   return (
     <>
       {/* Top Contact Info */}
-      <div className="z-50 bg-gray-100 border-b border-gray-200 py-2 hidden md:block">
+      <div
+        className="z-50 bg-gray-100 border-b border-gray-200 py-2 hidden md:block"
+        id="home"
+      >
         <div className="flex justify-between items-center mx-auto max-w-screen-xl px-4 md:px-20">
           <span className="flex text-xs font-inter text-black font-normal space-x-4">
             <span className="flex items-center hover:text-blue-600 transition-all duration-200">
@@ -59,7 +62,7 @@ export default function Navigation() {
               className="hover:text-blue-600 transition-all duration-300 flex items-center"
             >
               <FaPhoneAlt className="mr-2 text-blue-600" />
-              +1 (234) 567-890
+              +971 56 587 8198
             </a>
             <a
               href="mailto:info@crystalwipe.com"
@@ -91,7 +94,6 @@ export default function Navigation() {
             {[
               { name: "Home", href: "/#home" },
               { name: "Services", href: "/#services" },
-              { name: "Blog", href: "/#blog" },
               { name: "About", href: "/#about" },
               { name: "Contact", href: "/#contact" },
             ].map((link) => (
@@ -153,7 +155,6 @@ export default function Navigation() {
             {[
               { name: "Home", href: "/#home" },
               { name: "Services", href: "/#services" },
-              { name: "Blog", href: "/#blog" },
               { name: "About", href: "/#about" },
               { name: "Contact", href: "/#contact" },
             ].map((link) => (
