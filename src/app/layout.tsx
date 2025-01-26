@@ -24,9 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased text-slate-950 scroll-smooth`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased text-slate-950`}
       >
         <Navigation />
         <div className="bg-slate-100">{children}</div>

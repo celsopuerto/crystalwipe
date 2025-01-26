@@ -49,7 +49,7 @@ export default function About() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{
-              delay: 1,
+              delay: 0.5,
               duration: 1,
               type: "spring",
               stiffness: 120,
@@ -64,7 +64,7 @@ export default function About() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{
-              delay: 1.2,
+              delay: 0.52,
               duration: 1,
               type: "spring",
               stiffness: 120,
