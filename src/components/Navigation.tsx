@@ -69,7 +69,7 @@ export default function Navigation() {
               className="hover:text-blue-600 transition-all duration-300 flex items-center"
             >
               <FaEnvelope className="mr-2 text-blue-600" />
-              info@crystalwipe.com
+              crystalwipecs@gmail.com
             </a>
           </span>
         </div>
