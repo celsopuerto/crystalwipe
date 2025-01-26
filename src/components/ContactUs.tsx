@@ -53,7 +53,10 @@ export default function ContactUs() {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-r from-blue-50 via-indigo-100 to-pink-50 p-6">
+    <section
+      id="contact"
+      className="min-h-screen bg-gradient-to-r from-blue-50 via-indigo-100 to-pink-50 p-6"
+    >
       <div className="max-w-7xl mx-auto py-16">
         <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-12">
           Contact Us
