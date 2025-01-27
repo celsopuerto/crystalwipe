@@ -2,27 +2,15 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Calendar } from "@/components/ui/calendar";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const CleaningBookingPage: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedService, setSelectedService] = useState("");
-  const [extras, setExtras] = useState<{ [key: string]: boolean }>({
-    "Deep Cleaning": false,
-    "Carpet Cleaning": false,
-    "Window Cleaning": false,
-  });
 
   const services = [
     { id: 1, name: "Standard Cleaning", price: 50 },
@@ -30,12 +18,14 @@ const CleaningBookingPage: React.FC = () => {
     { id: 3, name: "Move-in/Move-out Cleaning", price: 120 },
   ];
 
-  const toggleExtra = (extra: string) => {
-    setExtras((prev) => ({ ...prev, [extra]: !prev[extra] }));
-  };
-
   const handleSubmit = () => {
-    alert("Booking submitted successfully!");
+    if (!selectedService || !selectedDate) {
+      alert("Please select a service and date.");
+      return;
+    }
+    alert(
+      `Booking submitted for ${selectedService} on ${selectedDate?.toLocaleDateString()}`
+    );
   };
 
   return (
@@ -55,24 +45,6 @@ const CleaningBookingPage: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-600 mb-2">
-                  Select Service
-                </label>
-                <Select onValueChange={setSelectedService}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Choose a service" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {services.map((service) => (
-                      <SelectItem key={service.id} value={service.name}>
-                        {service.name} - ${service.price}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-600 mb-2">
                   Pick a Date
                 </label>
                 <Calendar
@@ -82,25 +54,38 @@ const CleaningBookingPage: React.FC = () => {
                   className="rounded-md border p-2 shadow-sm"
                 />
               </div>
-            </div>
 
-            <div className="mt-6">
-              <h3 className="text-lg font-semibold text-gray-700 mb-4">
-                Add Extras
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {Object.keys(extras).map((extra) => (
-                  <div key={extra} className="flex items-center space-x-2">
-                    <Checkbox
-                      id={extra}
-                      checked={extras[extra]}
-                      onCheckedChange={() => toggleExtra(extra)}
-                    />
-                    <label htmlFor={extra} className="text-sm text-gray-600">
-                      {extra}
+              <div>
+                <h3 className="text-lg font-semibold text-gray-700 mb-4">
+                  Select Service
+                </h3>
+                <RadioGroup
+                  value={selectedService}
+                  onValueChange={setSelectedService}
+                  className="space-y-4"
+                >
+                  {services.map((service) => (
+                    <label
+                      key={service.id}
+                      htmlFor={`service-${service.id}`}
+                      className="flex items-center space-x-4 p-4 border rounded-lg shadow-sm hover:bg-blue-50 transition cursor-pointer"
+                    >
+                      <RadioGroupItem
+                        id={`service-${service.id}`}
+                        value={service.name}
+                        className="h-5 w-5"
+                      />
+                      <div className="flex flex-col">
+                        <span className="text-sm font-medium text-gray-800">
+                          {service.name}
+                        </span>
+                        <span className="text-xs text-gray-500">
+                          ${service.price}
+                        </span>
+                      </div>
                     </label>
-                  </div>
-                ))}
+                  ))}
+                </RadioGroup>
               </div>
             </div>
 
