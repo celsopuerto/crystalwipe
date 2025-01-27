@@ -48,8 +48,12 @@ const CleaningBookingPage: React.FC = () => {
                   Pick a Date
                 </label>
                 <Calendar
-                  selected={selectedDate}
-                  onSelect={setSelectedDate}
+                  selected={selectedDate || undefined}
+                  onSelect={(date) => {
+                    if (date) {
+                      setSelectedDate(date);
+                    }
+                  }}
                   mode="single"
                   className="rounded-md border p-2 shadow-sm"
                 />
