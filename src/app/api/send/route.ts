@@ -3,9 +3,9 @@ import { resend } from "@/config/resend"; // Update with actual import
 
 export async function POST(req: Request) {
   try {
-    const { name, email, message } = await req.json();
+    const { name, number, email, message } = await req.json();
 
-    if (!name || !email || !message) {
+    if (!name || !number || !email || !message) {
       return NextResponse.json({
         success: false,
         error: "Fill Up All Fields.",
@@ -16,7 +16,7 @@ export async function POST(req: Request) {
       from: "CrystalWipe <onboarding@resend.dev>",
       to: ["crystalwipecs@gmail.com"],
       subject: "CrystalWipe Contact Form",
-      html: `<h1>Name: ${name}<br>Email: ${email}<br>Message: ${message}</h1>`,
+      html: `<h1>Name: ${name}<br>Phone Number: ${number}<br>Email: ${email}<br>Message: ${message}</h1>`,
     });
 
     if (error) {

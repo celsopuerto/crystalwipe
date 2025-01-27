@@ -7,14 +7,26 @@ export default function ContactUs() {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
+    number: "",
     email: "",
     message: "",
   });
+  const [validationErrors, setValidationErrors] = useState({ number: false });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
+
+    if (name === "number") {
+      const numberWithoutSpaces = value.replace(/\s+/g, ""); // Remove spaces for validation
+      const phoneRegex = /^\+971\d{9}$/; // Regex for the format "+971 followed by 9 digits"
+      setValidationErrors((prevErrors) => ({
+        ...prevErrors,
+        number: !phoneRegex.test(numberWithoutSpaces) && value !== "",
+      }));
+    }
+
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
 
@@ -22,13 +34,24 @@ export default function ContactUs() {
     e.preventDefault();
     setLoading(true);
 
+    const processedFormData = {
+      ...formData,
+      number: formData.number.replace(/\s+/g, ""),
+    };
+
+    if (validationErrors.number) {
+      toast.error("Please correct the phone number format before submitting.");
+      setLoading(false);
+      return;
+    }
+
     try {
       const res = await fetch("/api/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData), // Ensure formData has the expected fields
+        body: JSON.stringify(processedFormData), // Ensure formData has the expected fields
       });
 
       if (!res.ok) {
@@ -76,6 +99,19 @@ export default function ContactUs() {
               onChange={handleChange}
               placeholder="Your name"
               className="w-full p-3 border rounded-md"
+              required
+            />
+            <input
+              type="text"
+              name="number"
+              value={formData.number}
+              onChange={handleChange}
+              placeholder="Your phone number (+971 56 587 8198)"
+              className={`w-full p-3 rounded-md border ${
+                validationErrors.number
+                  ? "border-red-500"
+                  : "border-gray-300 focus:border-transparent"
+              }`}
               required
             />
             <input
