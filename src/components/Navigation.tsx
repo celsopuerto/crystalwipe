@@ -110,7 +110,7 @@ export default function Navigation() {
           {/* Desktop Buttons (Book Online & Login) */}
           <div className="hidden md:flex items-center space-x-3 font-inter">
             <a
-              href="#"
+              href="/booking"
               className="px-5 py-2 text-sm font-bold text-blue-500 border border-gray-300 rounded-md hover:border-blue-500 hover:text-blue-500 transition-all duration-200"
             >
               Book Online
@@ -169,7 +169,7 @@ export default function Navigation() {
             ))}
             <div className="mt-6 flex flex-col items-center space-y-4">
               <a
-                href="#"
+                href="/booking"
                 className="px-5 py-2 text-sm font-bold text-blue-500 border border-gray-300 rounded-md hover:border-blue-500 hover:text-blue-500 transition-all duration-200"
               >
                 Book Online
