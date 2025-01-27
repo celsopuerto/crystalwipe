@@ -19,8 +19,8 @@ export default function ContactUs() {
     const { name, value } = e.target;
 
     if (name === "number") {
-      const numberWithoutSpaces = value.replace(/\s+/g, ""); // Remove spaces for validation
-      const phoneRegex = /^\+971\d{9}$/; // Regex for the format "+971 followed by 9 digits"
+      const numberWithoutSpaces = value.replace(/\s+/g, "");
+      const phoneRegex = /^\+971\d{9}$/;
       setValidationErrors((prevErrors) => ({
         ...prevErrors,
         number: !phoneRegex.test(numberWithoutSpaces) && value !== "",
@@ -51,11 +51,11 @@ export default function ContactUs() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(processedFormData), // Ensure formData has the expected fields
+        body: JSON.stringify(processedFormData),
       });
 
       if (!res.ok) {
-        const errorText = await res.text(); // Read error as text to debug
+        const errorText = await res.text();
         throw new Error(`Server responded with: ${res.status} ${errorText}`);
       }
 
@@ -80,11 +80,12 @@ export default function ContactUs() {
       id="contact"
       className="min-h-screen bg-gradient-to-r from-blue-50 via-indigo-100 to-pink-50 p-6"
     >
-      <div className="max-w-7xl mx-auto py-16">
+      <div className="mt-10 max-w-7xl mx-auto py-16">
         <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-12">
           Contact Us
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          {/* Form Section */}
           <form
             onSubmit={handleSubmit}
             className="bg-white rounded-lg shadow-lg p-8 space-y-6"
@@ -142,6 +143,56 @@ export default function ContactUs() {
               {loading ? "Sending..." : "Send Message"}
             </button>
           </form>
+
+          {/* Design Section */}
+          <div className="flex flex-col items-center justify-center text-center space-y-6">
+            <img
+              src="contact-illustration.png"
+              alt="Contact Illustration"
+              className="w-3/4 mx-auto"
+            />
+            <div>
+              <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+                Get in Touch
+              </h3>
+              <p className="text-gray-600">
+                Reach out to us through email or phone. We’re here to help and
+                answer any questions you might have.
+              </p>
+            </div>
+            <div className="flex flex-col items-center space-y-4">
+              <div className="text-gray-700">
+                <span className="font-bold">Email:</span>{" "}
+                crystalwipecs@gmail.com
+              </div>
+              <div className="text-gray-700">
+                <span className="font-bold">Phone:</span> +971 56 587 8198
+              </div>
+              <div className="flex space-x-4">
+                <a
+                  href="#"
+                  className="text-indigo-600 hover:text-indigo-800"
+                  aria-label="Facebook"
+                >
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a
+                  href="#"
+                  className="text-indigo-600 hover:text-indigo-800"
+                  aria-label="Twitter"
+                >
+                  <i className="fab fa-twitter"></i>
+                </a>
+                <a
+                  href="#"
+                  className="text-indigo-600 hover:text-indigo-800"
+                  aria-label="Instagram"
+                >
+                  <i className="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
